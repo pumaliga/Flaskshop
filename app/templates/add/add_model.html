@@ -18,14 +18,14 @@
 
     <div class="add-wrapper">
 
+
         <form method="POST" enctype="multipart/form-data">
             <p class="title">
-                Создать новую модель
+                Добавить новую модель
             </p>
-
             <div class="wrap-add">
                 <div class="select-choice">
-                    <select name="select-model" required class="select">
+                    <select name="select-model" class="select" required>
                         <option disabled selected>Тип обуви</option>
                         {% for i in categories %}
                             <option value="{{ i.id }}">{{ i.name }}</option>
@@ -33,10 +33,10 @@
                     </select>
                 </div>
                  <div class="div-mod">
-                     <input name="name" class="input-model" placeholder="Название">
+                     <input name="name" class="input-model" placeholder="Название" required>
                  </div>
                 <div class="div-mod">
-                    <textarea name="description" class="desc" placeholder="Описание модели"></textarea>
+                    <textarea name="description" class="desc" placeholder="Описание модели" required></textarea>
                 </div>
                 <div class="select-choice">
                     <select name="select-season" class="select" required>
@@ -53,14 +53,12 @@
                     </select>
                 </div>
                 <div class="div-mod">
-                    <input name="price" class="input-model" placeholder="Цена">
+                    <input name="price" class="input-model" placeholder="Цена" required>
                 </div>
                 <div class="img">
                     <input type="file" id="file">
                 </div>
-                <div>
-                    <input type="submit" value=Создать>
-                </div>
+                <button class="btn-model" type="submit">Создать</button>
             </div>
         </form>
     </div>

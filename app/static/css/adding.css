@@ -40,7 +40,7 @@
 }
 
 .wrap-add{
-    width: 100%;
+    /*width: 100%;*/
     margin-bottom: 10px;
     display: flex;
     margin-top: 50px;
@@ -79,10 +79,19 @@ input[type=file]{
 
 /*Блок для картинок */
 
+.img{
+    display: flex;
+    width: 70%;
+    justify-content: center;
+    flex-direction: column;
+}
+
 .preview{
     display: flex;
     flex-wrap: wrap;
-    padding: .5rem;
+    padding: 0.5rem;
+    justify-content: center;
+
 }
 
 .preview-img{
@@ -102,8 +111,8 @@ input[type=file]{
 }
 
 .preview-img img {
-    width: 180px;
-    height: 180px;
+    width: 200px;
+    height: 200px;
 }
 
 .preview-remove{
@@ -120,6 +129,19 @@ input[type=file]{
     justify-content: center;
     cursor: pointer;
     transition: opacity .22s;
+}
+
+.btn-img{
+    background-color: #3ca9e2;
+    border: none;
+    cursor: pointer;
+    color: white;
+    font-weight: bold;
+    /*width: 50%;*/
+    margin-bottom: 10px;
+    height: 40px;
+    font-size: 18px;
+    border-radius: 4px;
 }
 
 /*new model*/
@@ -164,4 +186,16 @@ input[type=file]{
     border: 1px solid #c2c0ca;
     border-radius: 4px;
     font-size: 16px;
+}
+
+.btn-model{
+    background-color: #96e0b3;
+    width: 70%;
+    height: 40px;
+    border: none;
+    font-size: 18px;
+    border-radius: 4px;
+    font-weight: bold;
+    color: white;
+    margin-bottom: 20px;
 }

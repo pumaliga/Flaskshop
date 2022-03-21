@@ -7,7 +7,7 @@ export function upload(selector, options = {}) {
     // создание кнопки с классом и текстом
     const open = document.createElement('button')
     open.classList.add('btn-img')
-    open.textContent = 'Открыть'
+    open.textContent = 'Добавить фото'
 
     if (options.multi){
         input.setAttribute('multiple', true)
@@ -46,7 +46,6 @@ export function upload(selector, options = {}) {
                         <img src="${src}" alt="${file.name}">
                     </div>
                 `)
-                // input.insertAdjacentHTML('afterend', `<img src="${ev.target.result}" />`)
             }
             reader.readAsDataURL(file)
 
