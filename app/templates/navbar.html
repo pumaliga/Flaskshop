@@ -1,0 +1,22 @@
+<div class="container">
+    <div class="logo">
+        <a class='link-logo' href="{{ url_for('main.index') }}"><h2>Braxton-shop</h2></a>
+    </div>
+    <div class="container-btn">
+         <div class="btn-nav">
+             <button class="btn">
+                 <a class="btn-a" href="{{ url_for('main.create_category') }}">Категория</a>
+             </button>
+         </div>
+        <div class="btn-nav">
+             <button class="btn">
+                 <a class="btn-a" href="{{ url_for('main.create_model') }}">Модель</a>
+             </button>
+         </div>
+        <form class="btn-nav-log" method="post">
+            <button class="btn">
+                <a class="btn-a" href="{{ url_for('main.logout') }}">Log out</a>
+            </button>
+         </form>
+    </div>
+</div>

@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+    <script type="module" src="{{ url_for('static', filename='js/app.js') }}"></script>
+    <script type="module" src="{{ url_for('static', filename='js/adding.js') }}"></script>
+
+
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul class=flashes>
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+
+    <div class="add-wrapper">
+
+        <form method="POST" enctype="multipart/form-data">
+            <p class="title">
+                Создать новую модель
+            </p>
+
+            <div class="wrap-add">
+                <div class="select-choice">
+                    <select name="select-model" required class="select">
+                        <option disabled selected>Тип обуви</option>
+                        {% for i in categories %}
+                            <option value="{{ i.id }}">{{ i.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                 <div class="div-mod">
+                     <input name="name" class="input-model" placeholder="Название">
+                 </div>
+                <div class="div-mod">
+                    <textarea name="description" class="desc" placeholder="Описание модели"></textarea>
+                </div>
+                <div class="select-choice">
+                    <select name="select-season" class="select" required>
+                        <option disabled selected>Сезон</option>
+                        <option value="Зима">Зима</option>
+                        <option value="Лето">Лето</option>
+                        <option value="Весна/Осень">Весна/Осень</option>
+                    </select>
+                </div>
+                <div class="select-choice">
+                    <select name="available" class="select" required>
+                        <option value="False" selected>Нет в наличии</option>
+                        <option value="True">В наличии</option>
+                    </select>
+                </div>
+                <div class="div-mod">
+                    <input name="price" class="input-model" placeholder="Цена">
+                </div>
+                <div class="img">
+                    <input type="file" id="file">
+                </div>
+                <div>
+                    <input type="submit" value=Создать>
+                </div>
+            </div>
+        </form>
+    </div>
+{% endblock %}
