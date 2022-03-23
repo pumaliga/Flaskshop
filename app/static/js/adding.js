@@ -1,5 +1,6 @@
 export function upload(selector, options = {}) {
     let files = []
+    // const onUpload = options.onUpload
     const input = document.querySelector(selector)
     const preview = document.createElement('div')
     preview.classList.add('preview')
@@ -8,6 +9,7 @@ export function upload(selector, options = {}) {
     const open = document.createElement('button')
     open.classList.add('btn-img')
     open.textContent = 'Добавить фото'
+
 
     if (options.multi){
         input.setAttribute('multiple', true)
@@ -27,6 +29,7 @@ export function upload(selector, options = {}) {
             return
         }
         files = Array.from(event.target.files)
+        console.log(files)
 
 
         preview.innerHTML = ''
@@ -67,9 +70,14 @@ export function upload(selector, options = {}) {
         block.classList.add('removing')
         setTimeout(() => block.remove(), 300)
     }
+    //
+    // const uploadHandler = () => {
+    //     onUpload(files)
+    // }
 
     open.addEventListener('click', triggerInput)
     input.addEventListener('change', changeHandler)
     preview.addEventListener('click', removeHandler)
+    // upload.addEventListener('click', uploadHandler)
 
 }

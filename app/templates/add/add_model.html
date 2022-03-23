@@ -19,14 +19,17 @@
     <div class="add-wrapper">
 
 
-        <form method="POST" enctype="multipart/form-data">
+        <form method="POST" id="myForm" enctype="multipart/form-data" >
             <p class="title">
                 Добавить новую модель
             </p>
             <div class="wrap-add">
+                <div class="img">
+                    <input type="file" id="file" name="files">
+                </div>
                 <div class="select-choice">
-                    <select name="select-model" class="select" required>
-                        <option disabled selected>Тип обуви</option>
+                    <select name="select-category" class="select" required>
+                        <option disabled selected value="">Тип обуви</option>
                         {% for i in categories %}
                             <option value="{{ i.id }}">{{ i.name }}</option>
                         {% endfor %}
@@ -40,7 +43,7 @@
                 </div>
                 <div class="select-choice">
                     <select name="select-season" class="select" required>
-                        <option disabled selected>Сезон</option>
+                        <option disabled selected value="">Сезон</option>
                         <option value="Зима">Зима</option>
                         <option value="Лето">Лето</option>
                         <option value="Весна/Осень">Весна/Осень</option>
@@ -55,11 +58,33 @@
                 <div class="div-mod">
                     <input name="price" class="input-model" placeholder="Цена" required>
                 </div>
-                <div class="img">
-                    <input type="file" id="file">
+                <div class="div-create">
+                    <input type="submit" class="btn-model" value="Создать">
                 </div>
-                <button class="btn-model" type="submit">Создать</button>
+{#                <button class="btn-model" id="exam" type="submit">Создать</button>#}
+                <button class="btn-home" type="submit">
+                    <a class="link" href="{{ url_for('main.index') }}">Назад</a>
+                </button>
             </div>
         </form>
     </div>
+{#    <script>#}
+{#        const myForm = document.getElementById('myForm')#}
+{#        const inpFiles = document.getElementById('file')#}
+{##}
+{#        myForm.addEventListener("submit", e => {#}
+{#            e.preventDefault()#}
+{##}
+{#            const endpoint = '/main/create/model'#}
+{#            const formData = new FormData()#}
+{##}
+{#            formData.append('file', file.files)#}
+{##}
+{#            fetch(endpoint, {#}
+{#                method: 'post',#}
+{#                body: formData#}
+{#            }).catch(console.error)#}
+{#        })#}
+{##}
+{#    </script>#}
 {% endblock %}
