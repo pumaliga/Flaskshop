@@ -188,8 +188,26 @@ input[type=file]{
     font-size: 16px;
 }
 
+.div-create{
+    width: 100%;
+}
+
 .btn-model{
+    cursor: pointer;
     background-color: #96e0b3;
+    width: 70%;
+    height: 40px;
+    border: none;
+    font-size: 18px;
+    border-radius: 4px;
+    font-weight: bold;
+    color: white;
+    margin-bottom: 10px;
+}
+
+.btn-home{
+    cursor: pointer;
+    background-color: #ed8989;
     width: 70%;
     height: 40px;
     border: none;
