@@ -1,6 +1,5 @@
 export function upload(selector, options = {}) {
     let files = []
-    // const onUpload = options.onUpload
     const input = document.querySelector(selector)
     const preview = document.createElement('div')
     preview.classList.add('preview')
@@ -29,9 +28,6 @@ export function upload(selector, options = {}) {
             return
         }
         files = Array.from(event.target.files)
-        console.log(files)
-
-
         preview.innerHTML = ''
         // проверка что файл является картинкой
         files.forEach(file => {
@@ -39,19 +35,18 @@ export function upload(selector, options = {}) {
                 return
             }
 
-            const reader = new FileReader()
-
-            reader.onload = ev => {
-                const src = ev.target.result
+            const src = URL.createObjectURL(file)
+            // const reader = new FileReader()
+            // reader.onload = ev => {
+                // const src = ev.target.result
                 preview.insertAdjacentHTML('afterbegin', `
                     <div class="preview-img">
                         <div class="preview-remove" data-name="${file.name}">&times;</div>
                         <img src="${src}" alt="${file.name}">
                     </div>
                 `)
-            }
-            reader.readAsDataURL(file)
-
+            // }
+            // reader.readAsDataURL(file)
         })
     }
 
@@ -70,14 +65,26 @@ export function upload(selector, options = {}) {
         block.classList.add('removing')
         setTimeout(() => block.remove(), 300)
     }
+
+    // const send = document.getElementById('send')
     //
-    // const uploadHandler = () => {
-    //     onUpload(files)
+    // function testing() {
+    //     let form = document.getElementById('formElem')
+    //     // let val = form['test'].value
+    //     let formData = new FormData(form);
+    //     files.forEach(file=>{
+    //         console.log(form['test'].value)
+    //         const endpoint = '/main/create/model'
+    //         formData.append('name', form['test'].value)
+    //         fetch(endpoint, {
+    //             method: "POST",
+    //             body: formData
+    //         }).catch(console.error)
+    //     })
     // }
 
     open.addEventListener('click', triggerInput)
     input.addEventListener('change', changeHandler)
     preview.addEventListener('click', removeHandler)
-    // upload.addEventListener('click', uploadHandler)
 
 }
