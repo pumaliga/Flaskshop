@@ -1,6 +1,6 @@
 from contextlib import contextmanager
 
-from sqlalchemy import String, Integer, Text, Boolean, create_engine, ForeignKey, Column
+from sqlalchemy import String, Integer, Text, Boolean, create_engine, ForeignKey, Column, LargeBinary
 
 from sqlalchemy.orm import relationship, declarative_base, scoped_session, sessionmaker
 
@@ -40,7 +40,7 @@ class Models(Base):
     name = Column(String(200), unique=True, nullable=False)
     descriptions = Column(Text, nullable=False)
     season = Column(String(50), nullable=False)
-    available = Column(Boolean, default=False)
+    available = Column(String(50), nullable=False)
     price = Column(Integer, nullable=False)
     model_img = relationship("Images", backref="models", lazy='dynamic',
                              cascade="all, delete, delete-orphan")
@@ -49,9 +49,7 @@ class Models(Base):
 class Images(Base):
     __tablename__ = 'images'
     id = Column(Integer, primary_key=True)
-    model_id = Column(Integer, ForeignKey('models.id'), nullable=False)
-    img = Column(String(200), unique=True, nullable=False)
-    name = Column(String(200), nullable=False)
-    mimetype = Column(String(200), nullable=False)
+    model_id = Column(Integer, ForeignKey('models.id'))
+    name = Column(String(200))
 
 

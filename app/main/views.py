@@ -1,9 +1,11 @@
+import os
+
 from flask import render_template, request, flash, redirect, url_for
 
+from app import UPLOAD_FOLDER
 from app.main import main
 from app.main.auth import logged_in_admin
-from app.models.tabs import session, Types
-from werkzeug.utils import secure_filename
+from app.models.tabs import session, Types, Models, Images
 
 
 
@@ -34,8 +36,26 @@ def create_category():
 def create_model():
     if request.method == "POST":
         data = request.form
-        print(data)
+        category = data.get('select-category')
+        name = data.get('name')
+        desc = data.get('description')
+        season = data.get('select-season')
+        available = data.get('available')
+        price = data.get('price')
+        files = request.files.getlist('files')
 
+        with session() as s:
+            model = Models(types_id=category, name=name, descriptions=desc,
+                           season=season, available=available, price=price)
+            s.add(model)
+
+            for file in files:
+                img = Images(name=file.filename)
+                file.save(os.path.join(UPLOAD_FOLDER, file.filename))
+                model.model_img.append(img)
+                s.add(img)
+
+            s.commit()
 
     with session() as s:
         categories = s.query(Types).all()
