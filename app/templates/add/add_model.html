@@ -61,10 +61,17 @@
                 <div class="div-create">
                     <input id="send" type="submit" class="btn-model" value="Создать" >
                 </div>
-                <button class="btn-home" type="submit" >
-                    <a class="link" href="{{ url_for('main.index') }}">Назад</a>
-                </button>
+                <button id="back" class="btn-home" type="submit" >Назад</button>
+{#                    <a class="link" href="{{ url_for('main.index') }}">Назад</a>#}
+
             </div>
         </form>
     </div>
+    <script>
+
+        const back = "{{ url_for('main.index') }}"
+        document.getElementById('back').addEventListener('click', function() {
+            location.href = back
+            })
+    </script>
 {% endblock %}

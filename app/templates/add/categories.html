@@ -20,18 +20,29 @@
                 Добавить новую категорию
             </p>
             <div class="wrap-add">
-                <input name="name" class="name-type" placeholder="Название категории">
+                <input name="name" class="name-type" placeholder="Название категории" required>
             </div>
             <button class="btn-add" type="submit">Создать</button>
+
             <div class="btn-wrap">
-                <button class="btn-set" type="submit" style="background-color: #3ca9e2;">
-                    <a class="link" href="{{ url_for('main.create_model') }}">Новая модель</a>
-                </button>
-                <button class="btn-set" type="submit" style="background-color: #ed8989">
-                    <a class="link" href="{{ url_for('main.index') }}">Назад</a>
-                </button>
+                <button id="model" class="btn-set" type="submit" style="background-color: #3ca9e2;">Новая модель</button>
+                <button id="back" class="btn-set" type="submit" style="background-color: #ed8989">Назад</button>
             </div>
         </form>
 
     </div>
+
+    <script>
+        const model = "{{ url_for('main.create_model') }}"
+        const back = "{{ url_for('main.index') }}"
+
+        document.getElementById('model').addEventListener('click', function() {
+            location.href = model
+            })
+
+        document.getElementById('back').addEventListener('click', function() {
+            location.href = back
+            })
+
+    </script>
 {% endblock %}
