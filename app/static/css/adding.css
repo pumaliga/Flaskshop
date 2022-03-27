@@ -40,7 +40,6 @@
 }
 
 .wrap-add{
-    /*width: 100%;*/
     margin-bottom: 10px;
     display: flex;
     margin-top: 50px;
@@ -65,11 +64,6 @@
     font-size: 18px;
     cursor: pointer;
     border-radius: 4px;
-}
-
-.link{
-    text-decoration: none;
-    outline: none;
     color: #fff;
 }
 
@@ -78,7 +72,6 @@ input[type=file]{
 }
 
 /*Блок для картинок */
-
 .img{
     display: flex;
     width: 70%;
@@ -137,7 +130,6 @@ input[type=file]{
     cursor: pointer;
     color: white;
     font-weight: bold;
-    /*width: 50%;*/
     margin-bottom: 10px;
     height: 40px;
     font-size: 18px;
