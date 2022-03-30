@@ -12,7 +12,22 @@ from app.models.tabs import session, Types, Models, Images
 @main.route('/')
 @logged_in_admin
 def index():
-    return render_template('index.html')
+    with session() as s:
+        categories = s.query(Types).all()
+    return render_template('index.html', categories=categories)
+
+
+@main.route('/category/<int:id>', methods=["GET"])
+def show_category(id):
+    with session() as s:
+        data_img = {}
+        filter_models = s.query(Models).filter(Models.types_id==id).all()
+        for i in filter_models:
+            id_img = i.id
+            img = s.query(Images).filter(Images.model_id==id_img).first()
+            data_img[id_img] = img.name
+
+    return render_template('category.html', models=filter_models, data_img=data_img)
 
 
 @main.route('create/category', methods=["GET", "POST"])
