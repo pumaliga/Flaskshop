@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <p class="title-models">Все модели в этой категории:</p>
+    <div class="container-models">
+         {% for models in models %}
+             <div class="model">
+                <img class="model-img" src="/static/media/{{ data_img[models.id]}}">
+                <span class="model-name">{{ models.name }}</span>
+             </div>
+         {% endfor %}
+    </div>
+{% endblock %}
