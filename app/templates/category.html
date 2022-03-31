@@ -6,7 +6,8 @@
          {% for models in models %}
              <div class="model">
                 <img class="model-img" src="/static/media/{{ data_img[models.id]}}">
-                <span class="model-name">{{ models.name }}</span>
+{#                <span class="model-name">{{ models.name }}</span>#}
+                <a class="model-name" href="{{ url_for('main.set_model', id = models.id )}}">{{ models.name }}</a>
              </div>
          {% endfor %}
     </div>

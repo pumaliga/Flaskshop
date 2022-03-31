@@ -3,27 +3,23 @@
         <img src="/static/img/bxlogo.jpg" alt="Bx-line" class="logo-img">
     </div>
     <div class="container-btn">
-         <div class="btn-nav">
-             <button class="btn" id="category">Категория</button>
-         </div>
-        <div class="btn-nav">
-             <button class="btn" id="model">Модель</button>
-         </div>
+        <div class="dropdown">
+            <button class="dropbtn">Перейти</button>
+                <div class="dropdown-content">
+                    {% for cat in categories %}
+                        <a href="{{ url_for('main.show_category', id = cat.id )}}">{{ cat.name }}</a>
+                    {% endfor %}
+                </div>
+        </div>
+        <div class="dropdown">
+            <button class="dropbtn">Добавить</button>
+                <div class="dropdown-content">
+                    <a href="{{ url_for('main.create_category') }}">Категорию</a>
+                    <a href="{{ url_for('main.create_model') }}">Модель</a>
+                </div>
+        </div>
         <form class="btn-nav-log" action="{{ url_for('main.logout') }}">
             <button class="btn" id="logout">Log out</button>
-         </form>
+        </form>
     </div>
 </div>
-
-<script>
-    const category = "{{ url_for('main.create_category') }}"
-    const model = "{{ url_for('main.create_model') }}"
-
-    document.getElementById('category').addEventListener('click', function() {
-            location.href = category
-            })
-
-    document.getElementById('model').addEventListener('click', function() {
-            location.href = model
-            })
-</script>
