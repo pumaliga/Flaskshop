@@ -1,9 +1,7 @@
 from flask import Flask
 
 
-# login_manager.login_view = 'auth.login'
-ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'}
-UPLOAD_FOLDER = 'app/uploads'
+UPLOAD_FOLDER = 'app/static/media'
 
 def create_app():
     app = Flask(__name__)
